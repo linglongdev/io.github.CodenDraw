@@ -1,0 +1,47 @@
+From f9fcc3e2a952a739961697908c3beaadb9f70fc6 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Wed, 18 Sep 2024 16:19:41 +0800
+Subject: [PATCH] install
+
+---
+ CodeDraw.desktop |  4 ++--
+ CodeDraw.pro     | 10 +++++++---
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/CodeDraw.desktop b/CodeDraw.desktop
+index 7ff5924..1bfe01e 100755
+--- a/CodeDraw.desktop
++++ b/CodeDraw.desktop
+@@ -6,8 +6,8 @@ Comment[ru]=Qt Приложение для управления ЧПУ обор
+ GenericName=Application for working with CNC equipment
+ GenericName[ru]=Приложение для управления ЧПУ оборудованием
+ Type=Application
+-Exec=/usr/bin/codedraw
+-Icon=codedraw.png
++Exec=codedraw
++Icon=CodeDrawLogo
+ Categories=Utility
+ Terminal=false
+ MimeType=image/jpeg;image/png;image/svg+xml;text/x.gcode;
+diff --git a/CodeDraw.pro b/CodeDraw.pro
+index 9f80c1b..8be2782 100644
+--- a/CodeDraw.pro
++++ b/CodeDraw.pro
+@@ -51,6 +51,10 @@ FORMS += \
+         ui/mainwindow.ui
+ 
+ # Default rules for deployment.
+-qnx: target.path = /tmp/$${TARGET}/bin
+-else: unix:!android: target.path = /opt/$${TARGET}/bin
+-!isEmpty(target.path): INSTALLS += target
++target.path = $$PREFIX/bin
++desktop.files = CodeDraw.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/apps/
++icons.files = icons/CodeDrawLogo.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
